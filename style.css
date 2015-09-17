@@ -1,0 +1,19 @@
+body {
+  background-color: black;
+}
+#mainContainer {
+  height: 500px;
+  width: 480px;
+  border-style: ridge;
+  margin: auto;
+  background-color: #2B2B2B;
+}
+
+li {
+  height: 70px;
+  width: 70px;
+  margin: 10px;
+  border-style: ridge;
+  list-style: none;
+  float: left;
+}
