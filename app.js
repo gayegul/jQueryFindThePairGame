@@ -16,13 +16,57 @@ $(document).ready(function() {
         var img = $('<img>');
         img.attr('src', imgs[i]);
         $(arrayOfBoxes[currentNumber]).find('a').append(img);
-        $(img).hide();
+        img.hide();
+
+        $(arrayOfBoxes[currentNumber]).click(handleClick);
+
         var index = arrayOfBoxes.indexOf(arrayOfBoxes[currentNumber]);
         if (index > -1) {
           arrayOfBoxes.splice(index, 1);
         }
         counter++;
       }
+    }
+
+    var openImgNumber = 0;
+    function handleClick(e) {
+      var liElement = $(e.target);
+
+      if(openImgNumber === 0) {
+        handleFirstClick(liElement);
+      }
+      else if(openImgNumber === 1) {
+        handleSecondClick(liElement);
+      }
+    }
+
+    var firstLiElement;
+    function handleFirstClick(liElement) {
+      openImgNumber++;
+      console.log(openImgNumber);
+      firstLiElement = liElement;
+      firstOpenPicUrl = liElement.find('img').show();
+      if(openImgNumber === 1) {
+        firstLiElement.off();
+      }
+    }
+
+    function handleSecondClick(liElement) {
+      openImgNumber++;
+      console.log(openImgNumber);
+      liElement.find('img').show();
+      console.log(liElement.find('img')[0].currentSrc);
+      if(liElement.find('img')[0].currentSrc !== firstLiElement.find('img')[0].currentSrc) {
+        liElement.find('img').slideDown( 300 ).delay( 300 ).fadeIn( 400 ).fadeOut();
+        firstLiElement.find('img').slideDown( 300 ).delay( 300 ).fadeIn( 400 ).fadeOut();
+        openImgNumber = 0;
+      }
+      else {
+        firstLiElement.find('img').show().off();
+        liElement.find('img').show().off();
+        openImgNumber = 0;
+      }
+      //openImgNumber = 0;
     }
   }
 

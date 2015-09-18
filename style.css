@@ -23,3 +23,8 @@ li {
   width: 70px;
   color: black;
 }
+
+.notActive {
+   pointer-events: none;
+   cursor: default;
+}
