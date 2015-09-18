@@ -1,34 +1,29 @@
 $(document).ready(function() {
   //get list of imgs from Instagram
-  var imgs = ["url('./pics/IMG_2528.jpg')", "url('./pics/IMG_2572.jpg')", "url('./pics/IMG_3226.jpg')", "url('./pics/IMG_3638.jpg')", "url('./pics/IMG_5771.jpg')", "url('./pics/IMG_3135.jpg')", "url('./pics/IMG_5929.jpg')", "url('./pics/IMG_5963.jpg')", "url('./pics/IMG_5925.jpg')", "url('./pics/IMG_5733.jpg')"];
+  var imgs = ["./pics/IMG_2528.jpg", "./pics/IMG_2572.jpg", "./pics/IMG_3226.jpg", "./pics/IMG_3638.jpg", "./pics/IMG_5771.jpg", "./pics/IMG_3135.jpg", "./pics/IMG_5929.jpg", "./pics/IMG_5963.jpg", "./pics/IMG_5925.jpg", "./pics/IMG_5733.jpg"];
 
-  var randomBoxNumber = Math.floor(Math.random()* ($('li').length - 1) + 1);
-  console.log(randomBoxNumber);
+  var arrayOfBoxes = $('li').toArray();
+
+  var randomBoxNumber = function() {
+    return Math.floor(Math.random()* (arrayOfBoxes.length - 1));
+  };
 
   function assignPic() {
     for(var i = 0; i < imgs.length; i++) {
-      if(isBoxEmpty(randomBoxNumber)) {
-        if(!imgs[i].usedNumber) {
-          $(':nth-child(' + randomBoxNumber + ')').css({content: imgs[i]});
-          jQuery.data(imgs[i], "usedNumber", 1);
-          console.log(imgs[i].usedNumber);
-          break;
+      var counter = 1;
+      while(counter < 3) {
+        var currentNumber = randomBoxNumber();
+        var img = $('<img>');
+        img.attr('src', imgs[i]);
+        $(arrayOfBoxes[currentNumber]).find('a').append(img);
+        $(img).hide();
+        var index = arrayOfBoxes.indexOf(arrayOfBoxes[currentNumber]);
+        if (index > -1) {
+          arrayOfBoxes.splice(index, 1);
         }
-        else if(imgs[i].usedNumber == 1) {
-          $(':nth-child(' + randomBoxNumber + ')').css({content: imgs[i]});
-          jQuery.data(imgs[i], "usedNumber", 2);
-          console.log(imgs[i].usedNumber);
-          break;
-        }
+        counter++;
       }
     }
-  }
-
-  function isBoxEmpty(n) {
-    if($(':nth-child(' + n + ')').has()) {
-      return true;
-    }
-    return false;
   }
 
   assignPic();
