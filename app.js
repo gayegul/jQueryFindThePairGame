@@ -45,7 +45,7 @@ $(document).ready(function() {
       openImgNumber++;
       console.log(openImgNumber);
       firstLiElement = liElement;
-      firstOpenPicUrl = liElement.find('img').show();
+      firstLiElement.find('img').show();
       if(openImgNumber === 1) {
         firstLiElement.off();
       }
@@ -55,18 +55,15 @@ $(document).ready(function() {
       openImgNumber++;
       console.log(openImgNumber);
       liElement.find('img').show();
-      console.log(liElement.find('img')[0].currentSrc);
       if(liElement.find('img')[0].currentSrc !== firstLiElement.find('img')[0].currentSrc) {
         liElement.find('img').slideDown( 300 ).delay( 300 ).fadeIn( 400 ).fadeOut();
         firstLiElement.find('img').slideDown( 300 ).delay( 300 ).fadeIn( 400 ).fadeOut();
-        openImgNumber = 0;
       }
       else {
         firstLiElement.find('img').show().off();
         liElement.find('img').show().off();
-        openImgNumber = 0;
       }
-      //openImgNumber = 0;
+      openImgNumber = 0;
     }
   }
 
