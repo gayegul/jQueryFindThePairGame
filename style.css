@@ -2,18 +2,24 @@ body {
   background-color: black;
 }
 #mainContainer {
-  height: 500px;
-  width: 480px;
+  height: 410px;
+  width: 470px;
   border-style: ridge;
   margin: auto;
   background-color: #2B2B2B;
 }
 
 li {
-  height: 70px;
+  height: 47px;
   width: 70px;
   margin: 10px;
   border-style: ridge;
   list-style: none;
+  float: left;
+}
+
+#sideBar {
+  font-family: cursive;
+  color: white;
   float: left;
 }
