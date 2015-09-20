@@ -1,4 +1,2 @@
 # jQueryFindThePairGame
-A find the pair web game written using jQuery.
-
-Play it at http://gayegul.github.io/jQueryFindThePairGame
+A side project to practice jQuery. Find the pair of photos at http://gayegul.github.io/jQueryFindThePairGame
