@@ -46,7 +46,7 @@ $(document).ready(function() {
       console.log(openImgNumber);
       firstLiElement = liElement;
       firstLiElement.find('img').show();
-      if(openImgNumber === 1) {
+      if(openImgNumber === 2) {
         firstLiElement.off();
       }
     }
@@ -55,6 +55,7 @@ $(document).ready(function() {
       openImgNumber++;
       console.log(openImgNumber);
       liElement.find('img').show();
+
       if(liElement.find('img')[0].currentSrc !== firstLiElement.find('img')[0].currentSrc) {
         liElement.find('img').slideDown( 300 ).delay( 300 ).fadeIn( 400 ).fadeOut();
         firstLiElement.find('img').slideDown( 300 ).delay( 300 ).fadeIn( 400 ).fadeOut();
