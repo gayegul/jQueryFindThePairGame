@@ -1,14 +1,21 @@
 body {
   background-color: black;
+  font-family: Papyrus;
+  color: white;
+}
+#sideBar {
+  float: left;
+  width: 300px;
+  margin-top: 150px;
+  margin-left: 70px;
 }
 #mainContainer {
   height: 410px;
   width: 470px;
   border-style: ridge;
-  margin: auto;
   background-color: #2B2B2B;
+  float: left;
 }
-
 li {
   height: 47px;
   width: 70px;
@@ -17,9 +24,13 @@ li {
   list-style: none;
   float: left;
 }
-
-#sideBar {
-  font-family: cursive;
-  color: white;
+#clickCounter {
+  width: 150px;
+  height: 100px;
+  margin-left: 100px;
+  margin-top: 150px;
   float: left;
+  border-style: ridge;
+  text-align: center;
+  padding-top: 10px;
 }

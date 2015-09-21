@@ -2,6 +2,8 @@ $(document).ready(function() {
   //get list of imgs from Instagram
   var imgs = ["./pics/IMG_2528.jpg", "./pics/IMG_2572.jpg", "./pics/IMG_3226.jpg", "./pics/IMG_3638.jpg", "./pics/IMG_5771.jpg", "./pics/IMG_3135.jpg", "./pics/IMG_5929.jpg", "./pics/IMG_5963.jpg", "./pics/IMG_5925.jpg", "./pics/IMG_5733.jpg"];
   var arrayOfBoxes = $('li').toArray();
+  var numberOfClicks = 0;
+
   var randomBoxNumber = function() {
     return Math.floor(Math.random()* (arrayOfBoxes.length - 1));
   };
@@ -26,35 +28,37 @@ $(document).ready(function() {
 
     var openImgNumber = 0;
     function handleClick(e) {
+      numberOfClicks++;
       var liElement = $(e.target);
-      console.log('clicked');
+      if(!liElement.is('li')) {
+        return;
+      }
+
       if(openImgNumber === 0) {
+        openImgNumber++;
         handleFirstClick(liElement);
       }
       else if(openImgNumber === 1) {
+        openImgNumber = 0;
         handleSecondClick(liElement);
       }
     }
 
     var firstLiElement;
     function handleFirstClick(liElement) {
-      openImgNumber++;
-      console.log(openImgNumber);
+      console.log("number of clicks " + numberOfClicks);
       firstLiElement = liElement;
       firstLiElement.find('img').show();
-      if(openImgNumber === 2) {
-        firstLiElement.off();
-      }
     }
 
     function handleSecondClick(liElement) {
-      openImgNumber++;
-      console.log(openImgNumber);
       liElement.find('img').show();
+      console.log(liElement);
+      console.log(firstLiElement);
 
       if(liElement.find('img')[0].currentSrc !== firstLiElement.find('img')[0].currentSrc) {
-        liElement.find('img').slideDown( 300 ).delay( 300 ).fadeIn( 400 ).fadeOut();
-        firstLiElement.find('img').slideDown( 300 ).delay( 300 ).fadeIn( 400 ).fadeOut();
+        liElement.find('img').delay(800).fadeOut();
+        firstLiElement.find('img').delay(800).fadeOut();
       }
       else {
         firstLiElement.off();
@@ -62,7 +66,6 @@ $(document).ready(function() {
         firstLiElement.find('img').show();
         liElement.find('img').show();
       }
-      openImgNumber = 0;
     }
   }
 
@@ -72,4 +75,7 @@ $(document).ready(function() {
 //get pics from Instagram API
 //find a scoreboard service to keep track of scores
   assignImages();
+  var result = $('<p id="number">' + numberOfClicks + '</p>');
+  var resultEl = document.createElement("p");
+  $('#clickCounter').append(result);
 });
