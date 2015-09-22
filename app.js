@@ -1,20 +1,29 @@
 $(document).ready(function() {
-
   var imgs = ["./pics/IMG_2528.jpg", "./pics/IMG_2572.jpg", "./pics/IMG_3226.jpg", "./pics/IMG_3638.jpg", "./pics/IMG_5771.jpg", "./pics/IMG_3135.jpg", "./pics/IMG_5929.jpg", "./pics/IMG_5963.jpg", "./pics/IMG_5925.jpg", "./pics/IMG_5733.jpg"];
-  var arrayOfBoxes = $('li').toArray();
   var numberOfClicks = 0;
 
-  var randomBoxNumber = function() {
-    return Math.floor(Math.random()* (arrayOfBoxes.length - 1));
-  };
-
   function assignImages() {
-    for(var i = 0; i < imgs.length; i++) {
+    $('ul').empty();
+    numberOfClicks = 0;
+    $('#clickNum').html(numberOfClicks);
+    var arrayOfBoxes = [];
+
+    for(var i = 0; i < imgs.length * 2; i++) {
+      var li = $('<li>');
+      var a = $('<a href="#">');
+      li.append(a);
+      arrayOfBoxes.push(li);
+      $('ul').append(li);
+    }
+    var randomBoxNumber = function() {
+      return Math.floor(Math.random()* (arrayOfBoxes.length - 1));
+    };
+    for(var j = 0; j < imgs.length; j++) {
       var counter = 1;
       while(counter < 3) {
         var currentNumber = randomBoxNumber();
         var img = $('<img>');
-        img.attr('src', imgs[i]);
+        img.attr('src', imgs[j]);
         $(arrayOfBoxes[currentNumber]).find('a').append(img);
         img.hide();
         $(arrayOfBoxes[currentNumber]).click(handleClick);
@@ -25,10 +34,12 @@ $(document).ready(function() {
         counter++;
       }
     }
-
+  }
     var openImgNumber = 0;
     function handleClick(e) {
       numberOfClicks++;
+      $('#clickNum').html(numberOfClicks);
+
       var liElement = $(e.target);
       if(!liElement.is('li')) {
         return;
@@ -46,7 +57,6 @@ $(document).ready(function() {
 
     var firstLiElement;
     function handleFirstClick(liElement) {
-      console.log("number of clicks " + numberOfClicks);
       firstLiElement = liElement;
       firstLiElement.find('img').show();
     }
@@ -66,20 +76,10 @@ $(document).ready(function() {
       }
     }
 
-    function reset() {
-      $('button').on(function() {
-
-      });
-    }
-  }
-
-//reset button
-//show number of clicks
-//customize number of li's and don't put li's in html
+    $('button').on('click', function() {
+        assignImages();
+    });
 //get pics from Instagram API
 //find a scoreboard service to keep track of scores
-
   assignImages();
-  $('#clickCounter').append('<div id="number">' + numberOfClicks + '</div>');
-
 });
