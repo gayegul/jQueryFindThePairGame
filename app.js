@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  //get list of imgs from Instagram
+
   var imgs = ["./pics/IMG_2528.jpg", "./pics/IMG_2572.jpg", "./pics/IMG_3226.jpg", "./pics/IMG_3638.jpg", "./pics/IMG_5771.jpg", "./pics/IMG_3135.jpg", "./pics/IMG_5929.jpg", "./pics/IMG_5963.jpg", "./pics/IMG_5925.jpg", "./pics/IMG_5733.jpg"];
   var arrayOfBoxes = $('li').toArray();
   var numberOfClicks = 0;
@@ -53,8 +53,6 @@ $(document).ready(function() {
 
     function handleSecondClick(liElement) {
       liElement.find('img').show();
-      console.log(liElement);
-      console.log(firstLiElement);
 
       if(liElement.find('img')[0].currentSrc !== firstLiElement.find('img')[0].currentSrc) {
         liElement.find('img').delay(800).fadeOut();
@@ -67,6 +65,12 @@ $(document).ready(function() {
         liElement.find('img').show();
       }
     }
+
+    function reset() {
+      $('button').on(function() {
+
+      });
+    }
   }
 
 //reset button
@@ -74,8 +78,8 @@ $(document).ready(function() {
 //customize number of li's and don't put li's in html
 //get pics from Instagram API
 //find a scoreboard service to keep track of scores
+
   assignImages();
-  var result = $('<p id="number">' + numberOfClicks + '</p>');
-  var resultEl = document.createElement("p");
-  $('#clickCounter').append(result);
+  $('#clickCounter').append('<div id="number">' + numberOfClicks + '</div>');
+
 });

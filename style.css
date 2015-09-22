@@ -9,6 +9,14 @@ body {
   margin-top: 150px;
   margin-left: 70px;
 }
+button {
+  height: 50px;
+  width: 100px;
+  border-style: ridge;
+  background-color: black;
+  color: white;
+  font-family: Papyrus;
+}
 #mainContainer {
   height: 410px;
   width: 470px;
