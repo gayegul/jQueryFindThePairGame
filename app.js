@@ -1,31 +1,61 @@
 $(document).ready(function() {
-  var imgs = ["./pics/IMG_2528.jpg", "./pics/IMG_2572.jpg", "./pics/IMG_3226.jpg", "./pics/IMG_3638.jpg", "./pics/IMG_5771.jpg", "./pics/IMG_3135.jpg", "./pics/IMG_5929.jpg", "./pics/IMG_5963.jpg", "./pics/IMG_5925.jpg", "./pics/IMG_5733.jpg"];
+  //var imgs = ["./pics/IMG_2528.jpg", "./pics/IMG_2572.jpg", "./pics/IMG_3226.jpg", "./pics/IMG_3638.jpg", "./pics/IMG_5771.jpg", "./pics/IMG_3135.jpg", "./pics/IMG_5929.jpg", "./pics/IMG_5963.jpg", "./pics/IMG_5925.jpg", "./pics/IMG_5733.jpg"];
+  var imgs = [];
+
+  function getInstaImages() {
+    //$('button').off();
+    $('#search').keyup(function(e) {
+      if(e.which == 13) {
+        var search;
+        search = $('#search').val();
+        $('search').submit();
+        $.ajax({
+          type: "GET",
+          dataType: "jsonp",
+          cache: false,
+          url: "https://api.instagram.com/v1/tags/" + search + "/media/recent?client_id=1b04a24609a04cecbef8dc4aac619e96",
+          success: function(data) {
+            for (var i = 0; i < 10; i++) {
+              //$("#picBoxes").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
+              imgs.push(data.data[i].images.low_resolution.url);
+            }
+            console.log(imgs);
+          }
+        });
+      }
+    });
+  }
+
   var numberOfClicks = 0;
 
   function assignImages() {
+    getInstaImages();
     $('ul').empty();
     numberOfClicks = 0;
     $('#clickNum').html(numberOfClicks);
     var arrayOfBoxes = [];
 
-    for(var i = 0; i < imgs.length * 2; i++) {
+    for(var i = 0; i < 20; i++) {
       var li = $('<li>');
       var a = $('<a href="#">');
       li.append(a);
       arrayOfBoxes.push(li);
       $('ul').append(li);
     }
+
     var randomBoxNumber = function() {
-      return Math.floor(Math.random()* (arrayOfBoxes.length - 1));
+      return Math.floor(Math.random() * (arrayOfBoxes.length - 1));
     };
+
     for(var j = 0; j < imgs.length; j++) {
       var counter = 1;
       while(counter < 3) {
         var currentNumber = randomBoxNumber();
         var img = $('<img>');
         img.attr('src', imgs[j]);
+        img.css({"height": "40px", "width": "70px", "margin": "none"});
         $(arrayOfBoxes[currentNumber]).find('a').append(img);
-        img.hide();
+        //img.hide();
         $(arrayOfBoxes[currentNumber]).click(handleClick);
         var index = arrayOfBoxes.indexOf(arrayOfBoxes[currentNumber]);
         if (index > -1) {
@@ -79,7 +109,7 @@ $(document).ready(function() {
     $('button').on('click', function() {
         assignImages();
     });
-//get pics from Instagram API
+
 //find a scoreboard service to keep track of scores
   assignImages();
 });

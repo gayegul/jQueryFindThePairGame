@@ -17,6 +17,9 @@ button {
   color: white;
   font-family: Papyrus;
 }
+#search {
+  float: left;
+}
 #mainContainer {
   height: 410px;
   width: 470px;
