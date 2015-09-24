@@ -5,7 +5,7 @@ body {
 }
 #sideBar {
   float: left;
-  width: 300px;
+  width: 25%;
   margin-top: 150px;
   margin-left: 70px;
 }
@@ -16,27 +16,33 @@ button {
   background-color: black;
   color: white;
   font-family: Papyrus;
+  display: block;
+  margin-top: 20px;
 }
 #search {
-  float: left;
+}
+p {
+  text-align: center;
+  margin-top: 50px;
 }
 #mainContainer {
   height: 410px;
-  width: 470px;
+  width: 40%;
   border-style: ridge;
   background-color: #2B2B2B;
   float: left;
 }
-li {
+#picBoxes li {
   height: 47px;
   width: 70px;
   margin: 10px;
   border-style: ridge;
   list-style: none;
   float: left;
+  cursor: pointer;
 }
 #clickCounter {
-  width: 150px;
+  width: 10%;
   height: 100px;
   margin-left: 100px;
   margin-top: 150px;

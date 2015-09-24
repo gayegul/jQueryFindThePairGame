@@ -1,12 +1,11 @@
-var imgs = [];
-function getInstaImages() {
-  //$('button').off();
+$(document).ready(function() {
+  var imgs = [];
   $('#search').keyup(function(e) {
     if(e.which == 13) {
       var search;
-      var key1 = '1b04a2460';
-      var key2 = '9a04cecbe';
-      var key3 = 'f8dc4aac619e96';
+      var key1 = '1b04a24609';
+      var key2 = 'a04cecbef8';
+      var key3 = 'dc4aac619e96';
       search = $('#search').val();
       $('search').submit();
       $.ajax({
@@ -18,30 +17,26 @@ function getInstaImages() {
           for (var i = 0; i < 10; i++) {
             //$("#picBoxes").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
             imgs.push(data.data[i].images.low_resolution.url);
+            assignImages();
           }
           console.log(imgs);
         }
       });
     }
   });
-}
-
-$(document).ready(function() {
   var numberOfClicks = 0;
 
   function assignImages() {
-    getInstaImages();
-    $('ul').empty();
+    $('#picBoxes').empty();
+    $('#search').val('');
     numberOfClicks = 0;
     $('#clickNum').html(numberOfClicks);
     var arrayOfBoxes = [];
 
     for(var i = 0; i < 20; i++) {
       var li = $('<li>');
-      var a = $('<a href="#">');
-      li.append(a);
       arrayOfBoxes.push(li);
-      $('ul').append(li);
+      $('#picBoxes').append(li);
     }
 
     var randomBoxNumber = function() {
@@ -55,8 +50,8 @@ $(document).ready(function() {
         var img = $('<img>');
         img.attr('src', imgs[j]);
         img.css({"height": "40px", "width": "70px", "margin": "none"});
-        $(arrayOfBoxes[currentNumber]).find('a').append(img);
-        //img.hide();
+        $(arrayOfBoxes[currentNumber]).append(img);
+        img.hide();
         $(arrayOfBoxes[currentNumber]).click(handleClick);
         var index = arrayOfBoxes.indexOf(arrayOfBoxes[currentNumber]);
         if (index > -1) {
@@ -112,5 +107,4 @@ $(document).ready(function() {
   });
 
 //find a scoreboard service to keep track of scores
-  assignImages();
 });
