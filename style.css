@@ -3,11 +3,14 @@ body {
   font-family: Papyrus;
   color: white;
 }
+#title {
+  font-size: 20px;
+}
 #sideBar {
   float: left;
-  width: 25%;
+  width: 20%;
   margin-top: 150px;
-  margin-left: 70px;
+  margin-left: 80px;
 }
 button {
   height: 50px;
@@ -26,15 +29,15 @@ p {
   margin-top: 50px;
 }
 #mainContainer {
-  height: 410px;
-  width: 40%;
-  border-style: ridge;
-  background-color: #2B2B2B;
+  height: 600px;
+  width: 50%;
+  /*border-style: ridge;
+  background-color: #2B2B2B;*/
   float: left;
 }
 #picBoxes li {
-  height: 47px;
-  width: 70px;
+  height: 80px;
+  width: 90px;
   margin: 10px;
   border-style: ridge;
   list-style: none;
@@ -44,10 +47,29 @@ p {
 #clickCounter {
   width: 10%;
   height: 100px;
-  margin-left: 100px;
+  margin-left: 70px;
   margin-top: 150px;
   float: left;
   border-style: ridge;
   text-align: center;
   padding-top: 10px;
+}
+li img {
+  height: 80px;
+  width: 90px;
+}
+#footer {
+  color: #A6B0B0;
+  font-size: 85%;
+	height: 30px;
+	position: fixed;
+  text-align: center;
+  padding: 10px;
+	bottom: 0;
+	left: 0;
+  right: 0;
+  background-color: #667979;
+}
+#footer a, #footer a:visited {
+  color: #A6B0B0;
 }

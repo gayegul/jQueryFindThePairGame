@@ -15,7 +15,6 @@ $(document).ready(function() {
         url: "https://api.instagram.com/v1/tags/" + search + "/media/recent?client_id=" + key1 + key2 + key3,
         success: function(data) {
           for (var i = 0; i < 10; i++) {
-            //$("#picBoxes").append("<li><a target='_blank' href='" + data.data[i].link + "'><img src='" + data.data[i].images.low_resolution.url + "'></img></a></li>");
             imgs.push(data.data[i].images.low_resolution.url);
             assignImages();
           }
@@ -49,7 +48,6 @@ $(document).ready(function() {
         var currentNumber = randomBoxNumber();
         var img = $('<img>');
         img.attr('src', imgs[j]);
-        img.css({"height": "40px", "width": "70px", "margin": "none"});
         $(arrayOfBoxes[currentNumber]).append(img);
         img.hide();
         $(arrayOfBoxes[currentNumber]).click(handleClick);
