@@ -13,16 +13,26 @@ body {
   margin-left: 80px;
 }
 button {
-  height: 50px;
-  width: 100px;
+  font-size: 18px;
   border-style: ridge;
   background-color: black;
   color: white;
   font-family: Papyrus;
   display: block;
   margin-top: 20px;
+  padding-top: 10px;
+}
+#pickTheme {
+  font-size: 18px;
+  text-align: center;
 }
 #search {
+  height: 80px;
+  width: 160px;
+  font-size: 24px;
+  text-align: center;
+  margin-left: 215px;
+  margin-top: 50px;
 }
 p {
   text-align: center;
@@ -31,8 +41,6 @@ p {
 #mainContainer {
   height: 600px;
   width: 50%;
-  /*border-style: ridge;
-  background-color: #2B2B2B;*/
   float: left;
 }
 #picBoxes li {
@@ -45,14 +53,13 @@ p {
   cursor: pointer;
 }
 #clickCounter {
-  width: 10%;
-  height: 100px;
   margin-left: 70px;
   margin-top: 150px;
   float: left;
   border-style: ridge;
   text-align: center;
   padding-top: 10px;
+  font-size: 16px;
 }
 li img {
   height: 80px;

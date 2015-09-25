@@ -23,9 +23,12 @@ $(document).ready(function() {
       });
     }
   });
+
   var numberOfClicks = 0;
 
   function assignImages() {
+    $('#search').hide();
+    $('#pickTheme').hide();
     $('#picBoxes').empty();
     $('#search').val('');
     numberOfClicks = 0;
