@@ -62,7 +62,7 @@ $(document).ready(function() {
       }
     }
   }
-  
+
   var openImgNumber = 0;
   function handleClick(e) {
     numberOfClicks++;
@@ -113,7 +113,5 @@ $(document).ready(function() {
 
 //TO DO List
 //what happens after game ends?
-//what happens after clicking 'play again' after you are done?
-//center the li boxes
 //find a scoreboard service to keep track of scores
 });
