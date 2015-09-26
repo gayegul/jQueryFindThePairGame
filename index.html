@@ -7,22 +7,18 @@
 <link rel="stylesheet" href="style.css">
 <body>
   <p id="title">DARE TO PAIR?</p>
-  <div id="sideBar">
-    <button>Play again?</button>
+  <div>
+    <div id="mainContainer">
+      <button id="reset" class="hidden">Play again?</button>
+      <div id="clickCounter" class="hidden">Number of Clicks <span id="clickNum">0</span></div>
+      <p id="pickTheme">Please pick a theme and press Enter</p>
+      <input type="text" id="search" placeholder="#hashtag"/>
+      <ul id="picBoxes"></ul>
+    </div>
   </div>
-
-  <div id="mainContainer">
-    <p id="pickTheme">Please pick a theme and press Enter</p>
-    <input type="text" id="search" placeholder="#hashtag"/>
-    <ul id="picBoxes"></ul>
-  </div>
-
-  <div id="clickCounter">Number of Clicks <div id="clickNum">0</div></div>
-
   <div id="footer">© 2015 Gaye Gul Bulut |
-    <a href="https://github.com/gayegul/jQueryFindThePairGame">GitHub</a>
+    <a href="https://github.com/gayegul/jQueryFindThePairGame" target="_blank">GitHub</a>
   </div>
-
   <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
   <script type="text/javascript" src="app.js"></script>
 </body>

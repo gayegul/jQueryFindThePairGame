@@ -6,33 +6,31 @@ body {
 #title {
   font-size: 20px;
 }
-#sideBar {
-  float: left;
-  width: 20%;
-  margin-top: 150px;
-  margin-left: 80px;
+.hidden {
+    visibility: hidden;
 }
-button {
+#reset {
   font-size: 18px;
   border-style: ridge;
   background-color: black;
   color: white;
   font-family: Papyrus;
-  display: block;
-  margin-top: 20px;
   padding-top: 10px;
+  position: absolute;
+  left: 200px;
+  top: 200px;
 }
 #pickTheme {
   font-size: 18px;
   text-align: center;
 }
 #search {
-  height: 80px;
-  width: 160px;
+  height: 40px;
+  width: 300px;
   font-size: 24px;
-  text-align: center;
-  margin-left: 215px;
-  margin-top: 50px;
+  text-align: left;
+  margin-left: 150px;
+  margin-top: 20px;
 }
 p {
   text-align: center;
@@ -40,8 +38,12 @@ p {
 }
 #mainContainer {
   height: 600px;
-  width: 50%;
-  float: left;
+  width: 600px;
+  margin: auto;
+  padding-bottom: 100px;
+}
+#picBoxes {
+  margin-left: 30px;
 }
 #picBoxes li {
   height: 80px;
@@ -53,13 +55,12 @@ p {
   cursor: pointer;
 }
 #clickCounter {
-  margin-left: 70px;
-  margin-top: 150px;
-  float: left;
-  border-style: ridge;
   text-align: center;
   padding-top: 10px;
   font-size: 16px;
+  position: absolute;
+  left: 200px;
+  top: 100px;
 }
 li img {
   height: 80px;

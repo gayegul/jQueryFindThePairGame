@@ -7,18 +7,17 @@ $(document).ready(function() {
       var key2 = 'a04cecbef8';
       var key3 = 'dc4aac619e96';
       search = $('#search').val();
-      $('search').submit();
       $.ajax({
         type: "GET",
         dataType: "jsonp",
         cache: false,
         url: "https://api.instagram.com/v1/tags/" + search + "/media/recent?client_id=" + key1 + key2 + key3,
         success: function(data) {
+          imgs = [];
           for (var i = 0; i < 10; i++) {
             imgs.push(data.data[i].images.low_resolution.url);
-            assignImages();
           }
-          console.log(imgs);
+          assignImages();
         }
       });
     }
@@ -27,9 +26,10 @@ $(document).ready(function() {
   var numberOfClicks = 0;
 
   function assignImages() {
+    $('#clickCounter').removeClass('hidden');
+    $('#reset').removeClass('hidden');
     $('#search').hide();
     $('#pickTheme').hide();
-    $('#picBoxes').empty();
     $('#search').val('');
     numberOfClicks = 0;
     $('#clickNum').html(numberOfClicks);
@@ -62,6 +62,7 @@ $(document).ready(function() {
       }
     }
   }
+  
   var openImgNumber = 0;
   function handleClick(e) {
     numberOfClicks++;
@@ -103,9 +104,16 @@ $(document).ready(function() {
     }
   }
 
-  $('button').on('click', function() {
-      assignImages();
+  $('#reset').on('click', function() {
+      $('#search').show();
+      $('#reset').addClass('hidden');
+      $('#clickCounter').addClass('hidden');
+      $('#picBoxes').empty();
   });
 
+//TO DO List
+//what happens after game ends?
+//what happens after clicking 'play again' after you are done?
+//center the li boxes
 //find a scoreboard service to keep track of scores
 });
