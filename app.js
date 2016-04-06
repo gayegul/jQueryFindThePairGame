@@ -54,10 +54,7 @@ $(document).ready(function() {
         $(arrayOfBoxes[currentNumber]).append(img);
         img.hide();
         $(arrayOfBoxes[currentNumber]).click(handleClick);
-        var index = arrayOfBoxes.indexOf(arrayOfBoxes[currentNumber]);
-        if (index > -1) {
-          arrayOfBoxes.splice(index, 1);
-        }
+        arrayOfBoxes.splice(currentNumber, 1);
         counter++;
       }
     }
@@ -69,6 +66,8 @@ $(document).ready(function() {
     $('#clickNum').html(numberOfClicks);
 
     var liElement = $(e.target);
+
+    // do nothing if clicked item is not li (when it is the img)
     if(!liElement.is('li')) {
       return;
     }
@@ -99,8 +98,6 @@ $(document).ready(function() {
     else {
       firstLiElement.off();
       liElement.off();
-      firstLiElement.find('img').show();
-      liElement.find('img').show();
     }
   }
 
